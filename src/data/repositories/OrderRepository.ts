@@ -1,6 +1,7 @@
-import { Repository } from 'typeorm';
-import { AppDataSource } from '../../core/config/ormconfig';
-import { Order } from '../../domain/entities/Order';
+import { AppDataSource } from "@/core/config/ormconfig";
+import { Order } from "@/domain/entities/Order";
+import { Repository } from "typeorm";
+
 
 export class OrderRepository {
   private repository: Repository<Order>;
@@ -22,9 +23,8 @@ export class OrderRepository {
     return this.repository.save(newOrder);
   }
 
-  async update(id: number, order: Partial<Order>): Promise<Order> {
+  async update(id: number, order: Partial<Order>): Promise<void> {
     await this.repository.update(id, order);
-    return this.repository.findOneBy({ id }) as Order;
   }
 
   async delete(id: number): Promise<void> {

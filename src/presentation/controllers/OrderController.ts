@@ -1,5 +1,5 @@
+import { OrderUseCase } from '@/domain/useCases/OrderUseCases';
 import { Request, Response } from 'express';
-import { OrderUseCase } from '../../domain/usecases/OrderUseCase';
 
 const useCase = new OrderUseCase();
 
@@ -11,9 +11,6 @@ export const OrderController = {
 
   async getOne(req: Request, res: Response) {
     const order = await useCase.getOrderById(Number(req.params.id));
-    if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
-    }
     res.json(order);
   },
 

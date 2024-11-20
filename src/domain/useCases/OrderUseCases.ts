@@ -1,5 +1,5 @@
-import { Order } from '../entities/Order';
-import { OrderRepository } from '../../data/repositories/OrderRepository';
+import { OrderRepository } from '@/data/repositories/OrderRepository';
+import { Order } from '@/domain/entities/Order';
 
 export class OrderUseCase {
   private repository: OrderRepository;
@@ -20,8 +20,9 @@ export class OrderUseCase {
     return this.repository.create(order);
   }
 
-  async updateOrder(id: number, order: Partial<Order>): Promise<Order> {
-    return this.repository.update(id, order);
+  async updateOrder(id: number, order: Partial<Order>): Promise<Order | null> {
+    await this.repository.update(id, order);
+    return this.repository.findById(id);
   }
 
   async deleteOrder(id: number): Promise<void> {
