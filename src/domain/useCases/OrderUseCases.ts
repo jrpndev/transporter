@@ -28,4 +28,8 @@ export class OrderUseCase {
   async deleteOrder(id: number): Promise<void> {
     await this.repository.delete(id);
   }
+
+  async listOrdersByStatus(status: string): Promise<Order[]> {
+    return this.repository.findByStatus(status);
+  }
 }

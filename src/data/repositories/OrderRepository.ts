@@ -30,4 +30,7 @@ export class OrderRepository {
   async delete(id: number): Promise<void> {
     await this.repository.delete(id);
   }
+  async findByStatus(status: string): Promise<Order[]> {
+    return this.repository.find({ where: { status: status } });
+  }
 }

@@ -18,5 +18,5 @@ export class Order {
   totalValue!: number;
 
   @Column()
-  status!: 'Pending' | 'In Progress' | 'Completed';
+  status!: string;
 }
