@@ -1,1 +1,15 @@
-node_modules
+# Dependências do Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Diretórios de build
+dist/
+build/
+
+# Dependências de pacotes Yarn e npm
+.yarn/
+.pnp.*
